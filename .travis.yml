@@ -1,0 +1,18 @@
+sudo: required
+dist: bionic
+language: csharp
+mono: none
+dotnet: 2.1
+script:
+  - docker-compose build
+before_deploy:
+  - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
+deploy:
+  provider: script
+  script:
+    docker tag WebApiTravisCI:latest $DOCKER_USERNAME/WebApiTravisCI:latest;
+    docker push $DOCKER_USERNAME/WebApiTravisCI:latest;
+  on:
+    brach: master
+notifications:
+  email: false
