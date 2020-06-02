@@ -10,8 +10,8 @@ before_deploy:
 deploy:
   provider: script
   script:
-    docker tag WebApiTravisCI:latest $DOCKER_USERNAME/WebApiTravisCI:latest;
-    docker push $DOCKER_USERNAME/WebApiTravisCI:latest;
+    docker tag webapitravisci:latest $DOCKER_USERNAME/webapitravisci:latest;
+    docker push $DOCKER_USERNAME/webapitravisci:latest;
   on:
     brach: master
 notifications:
